@@ -25,6 +25,19 @@ public class RegisterPage extends BasePage {
 
     @FindBy(xpath = "//*[text()='First name is required.']")
     public WebElement FirstNameWrongMessage;
+    @FindBy(xpath = "//*[text()='Last name is required.']")
+    public WebElement LastNameWrongMessage;
+
+    @FindBy(xpath = "//*[text()='Email is required.']")
+    public WebElement emailWrongMessage;
+
+    @FindBy(xpath = "//*[text()='Password is required.']")
+    public WebElement passwordWrongMessage;
+
+    @FindBy(css = "[class='field-validation-error']")
+    public WebElement confirmPasswordWrongMessage;
+
+
 
     public void registerListAusfüllen(String gender, String Vorname, String NachName, String email, String Passwort, String ConfirmPassword) {
         WebElement gender_we = Driver.get().findElement(By.xpath("//input[@value='" + gender + "']"));

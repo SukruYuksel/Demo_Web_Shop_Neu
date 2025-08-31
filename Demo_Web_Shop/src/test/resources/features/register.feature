@@ -21,66 +21,69 @@ Feature: Als Benutzer sollte ich mich auf der Website registrieren können.
       | menuName | Gender | Vorname | Nachname | Email | Password | Confirm Password | Fehlermessage                    |
       | Register |        |         |          |       |          |                  | First name is required. |
 
+
+
   @TestCase03
-  Scenario Outline: Negative Register Test-Ohne Gender geben
-    And Der Benutzer navigiert zur Registrierungsseite mit "<menuName>"
-    When Der Benutzer registiert sic mit "<Gender>" und "<Vorname>" und "<Nachname>" und "<Email>" und "<Password>" und "<Confirm Password>"
-    Then Der Bentzer kann "<Message>" Message sehen.
-    Examples:
-      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password | Message                     |
-      | Register |        | Alex    | Sauza    | alexsauz4@gmail.com | Test1234 | Test1234         | Your registration completed |
-
-
-  @TestCase04
   Scenario Outline: Negative Register Test-Ohne Vorname geben
     And Der Benutzer navigiert zur Registrierungsseite mit "<menuName>"
     When Der Benutzer registiert sic mit "<Gender>" und "<Vorname>" und "<Nachname>" und "<Email>" und "<Password>" und "<Confirm Password>"
-    Then Der Bentzer kann "<Message>" Message sehen.
+    Then Der Benutzer kann sich Ohne Vorname  nicht registieren und bekommt Fehlercode
     Examples:
-      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password | Message                     |
-      | Register |        |         | Sauza    | alexsauz4@gmail.com | Test1234 | Test1234         | Your registration completed |
+      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password |
+      | Register |    M    |         | Sauza    | alexsauz4@gmail.com | Test1234 | Test1234         |
 
-  @TestCase05
+  @TestCase04
   Scenario Outline: Negative Register Test-Ohne Nahnahme geben
     And Der Benutzer navigiert zur Registrierungsseite mit "<menuName>"
     When Der Benutzer registiert sic mit "<Gender>" und "<Vorname>" und "<Nachname>" und "<Email>" und "<Password>" und "<Confirm Password>"
-    Then Der Bentzer kann "<Message>" Message sehen.
+    Then Der Benutzer kann sich Ohne Nachname  nicht registieren und bekommt Fehlercode
     Examples:
-      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password | Message                     |
-      | Register |        | Alex    |          | alexsauz4@gmail.com | Test1234 | Test1234         | Your registration completed |
+      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password |
+      | Register |        | Alex    |          | alexsauz4@gmail.com | Test1234 | Test1234         |
 
-  @TestCase06
+  @TestCase05
   Scenario Outline: Negative Register Test-Ohne emailadresse geben
     And Der Benutzer navigiert zur Registrierungsseite mit "<menuName>"
     When Der Benutzer registiert sic mit "<Gender>" und "<Vorname>" und "<Nachname>" und "<Email>" und "<Password>" und "<Confirm Password>"
-    Then Der Bentzer kann "<Message>" Message sehen.
+    Then Der Benutzer kann sich Ohne Email  nicht registieren und bekommt Fehlercode
     Examples:
-      | menuName | Gender | Vorname | Nachname | Email | Password | Confirm Password | Message                     |
-      | Register |        | Alex    | Sauza    |       | Test1234 | Test1234         | Your registration completed |
+      | menuName | Gender | Vorname | Nachname | Email | Password | Confirm Password |
+      | Register |        | Alex    | Sauza    |       | Test1234 | Test1234         |
 
-  @TestCase07
+  @TestCase06
   Scenario Outline: Negative Register Test-Ohne Password
     And Der Benutzer navigiert zur Registrierungsseite mit "<menuName>"
     When Der Benutzer registiert sic mit "<Gender>" und "<Vorname>" und "<Nachname>" und "<Email>" und "<Password>" und "<Confirm Password>"
-    Then Der Bentzer kann "<Message>" Message sehen.
+    Then Der Benutzer kann sich Ohne Password nicht registeren und bekommt Fehlercode
     Examples:
-      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password | Message                     |
-      | Register | M      | Alex    | Sauza    | alexsauz4@gmail.com |          | Test1234         | Your registration completed |
+      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password |
+      | Register | M      | Alex    | Sauza    | alexsauz4@gmail.com |          | Test1234         |
 
-  @TestCase08
+  @TestCase07
   Scenario Outline: Negative Register Test-Ohne ConfirmPassword geben
     And Der Benutzer navigiert zur Registrierungsseite mit "<menuName>"
     When Der Benutzer registiert sic mit "<Gender>" und "<Vorname>" und "<Nachname>" und "<Email>" und "<Password>" und "<Confirm Password>"
-    Then Der Bentzer kann "<Message>" Message sehen.
+    Then Der Benutzer kann sich Ohne Confirm Password nicht registeren und bekommt Fehlercode
     Examples:
-      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password | Message                     |
-      | Register | M      | Alex    | Sauza    | alexsauz4@gmail.com | Test1234 |                  | Your registration completed |
+      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password |
+      | Register | M      | Alex    | Sauza    | alexsauz4@gmail.com | Test1234 |                  |
 
-  @TestCase09
+  @TestCase08
   Scenario Outline: Negative Register Test-Password und ConfirmPassword unterschiedlich geben
     And Der Benutzer navigiert zur Registrierungsseite mit "<menuName>"
     When Der Benutzer registiert sic mit "<Gender>" und "<Vorname>" und "<Nachname>" und "<Email>" und "<Password>" und "<Confirm Password>"
-    Then Der Bentzer kann "<Message>" Message sehen.
+    Then Der Benutzer kann sich unterscheidliche  Password und Confirm Password nicht registeren und bekommt Fehlercode
     Examples:
-      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password | Message                     |
-      | Register | M      | Alex    | Sauza    | alexsauz4@gmail.com | Test1234 | Test123452       | Your registration completed |
+      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password |
+      | Register | M      | Alex    | Sauza    | alexsauz4@gmail.com | Test1234 | Test123452       |
+
+  @TestCase09
+  Scenario Outline: Negative Register Test-Password 5 Karakkter eingeben
+    And Der Benutzer navigiert zur Registrierungsseite mit "<menuName>"
+    When Der Benutzer registiert sic mit "<Gender>" und "<Vorname>" und "<Nachname>" und "<Email>" und "<Password>" und "<Confirm Password>"
+    Then Der Benutzer kann sich nicht registeren. Passwort sollte mindestens 6 Stelleg sein
+    Examples:
+      | menuName | Gender | Vorname | Nachname | Email               | Password | Confirm Password |
+      | Register | M      | Alex    | Sauza    | alexsauz4@gmail.com | Test| Test    |
+
+    #Für Emailadresse andere negative Test schreiben bitte
