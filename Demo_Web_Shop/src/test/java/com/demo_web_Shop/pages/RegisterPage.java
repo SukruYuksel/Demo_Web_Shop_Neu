@@ -23,6 +23,9 @@ public class RegisterPage extends BasePage {
     @FindBy(xpath = "//*[normalize-space(text())='Your registration completed']")
     public WebElement registrationSuccessMessage;
 
+    @FindBy(xpath = "//*[text()='First name is required.']")
+    public WebElement FirstNameWrongMessage;
+
     public void registerListAusfüllen(String gender, String Vorname, String NachName, String email, String Passwort, String ConfirmPassword) {
         WebElement gender_we = Driver.get().findElement(By.xpath("//input[@value='" + gender + "']"));
         BrowserUtils.waitFor(5);
